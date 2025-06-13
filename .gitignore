@@ -1,0 +1,6 @@
+.idea
+info.txt
+
+node_modules
+
+validate-package.sh
