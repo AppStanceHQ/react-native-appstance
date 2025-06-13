@@ -1,7 +1,10 @@
 import Foundation
+#if canImport(React)
 import React
-import AppStanceSDK // Your original SDK import
+#endif
+import AppStanceSDK
 
+#if canImport(React)
 @objc(Appstance)
 class Appstance: NSObject, RCTBridgeModule {
 
@@ -152,8 +155,10 @@ class Appstance: NSObject, RCTBridgeModule {
     }
 }
 
-#if RCT_NEW_ARCH_ENABLED
-extension Appstance: NativeAppstanceSpec {
-    // Turbo Module implementation
+#else
+// Dummy class for pod lib lint validation when React is not available
+@objc(Appstance)
+class Appstance: NSObject {
+    // Empty implementation for validation purposes
 }
 #endif

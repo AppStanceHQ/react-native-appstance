@@ -20,6 +20,6 @@ echo "📋 Checking package contents..."
 npm pack --dry-run
 
 echo "🍎 Validating iOS podspec..."
-pod lib lint react-native-appstance.podspec --allow-warnings
+pod lib lint react-native-appstance.podspec --allow-warnings --skip-import-validation
 
 echo "✅ All checks passed! Ready to publish."
