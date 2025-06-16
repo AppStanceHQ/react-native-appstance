@@ -14,7 +14,10 @@ Pod::Spec.new do |s|
   s.platforms    = { :ios => "13.0" }
   s.source       = { :git => "https://github.com/AppStanceHQ/react-native-appstance.git", :tag => "#{s.version}" }
 
-  s.source_files = "ios/**/*.{swift}"
+  # Include Swift, headers, Objective-C glue if any (.m)
+  s.source_files = "ios/**/*.{swift,h,m}"
+
+  s.module_name = "Appstance"
 
   s.pod_target_xcconfig = {
     'DEFINES_MODULE' => 'YES',
