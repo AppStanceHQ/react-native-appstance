@@ -1,6 +1,6 @@
 {
   "name": "react-native-appstance",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "description": "React Native wrapper for AppStance iOS SDK - Revenue tracking, user analytics, and remote configuration",
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",
