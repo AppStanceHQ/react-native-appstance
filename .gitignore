@@ -1,9 +1,10 @@
 .idea
 info.txt
-
 node_modules
-
 validate-package.sh
-
 example
 android
+.DS_Store
+lib
+*.log
+*.tgz

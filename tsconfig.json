@@ -10,6 +10,6 @@
     "allowSyntheticDefaultImports": true,
     "jsx": "react-native"
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "example", "ios", "android", "lib"]
+  "include": ["index.js", "ios/**/*"],
+  "exclude": ["node_modules", "example", "android", "lib"]
 }
