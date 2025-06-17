@@ -1,4 +1,3 @@
-
 require 'json'
 
 package = JSON.parse(File.read(File.join(__dir__, '..', 'package.json')))
@@ -18,8 +17,17 @@ Pod::Spec.new do |s|
   s.source         = { git: 'https://github.com/AppStanceHQ/react-native-appstance' }
   s.static_framework = true
 
-  s.dependency 'ExpoModulesCore'
+  # Dependencies
   s.dependency 'AppStanceSDK', '0.6.6'
+
+  # Conditionally add ExpoModulesCore only if available
+  if defined?(Pod::Specification) && Pod::Specification.method_defined?(:dependency)
+    begin
+      s.dependency 'ExpoModulesCore'
+    rescue
+      # ExpoModulesCore not available, skip it
+    end
+  end
 
   # Swift/Objective-C compatibility
   s.pod_target_xcconfig = {
