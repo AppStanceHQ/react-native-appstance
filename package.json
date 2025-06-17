@@ -1,138 +1,42 @@
 {
   "name": "react-native-appstance",
-  "version": "0.5.3",
-  "description": "React Native wrapper for AppStance iOS SDK - Revenue tracking, user analytics, and remote configuration",
-  "main": "lib/commonjs/index.js",
-  "module": "lib/module/index.js",
-  "react-native": "src/index.js",
-  "source": "src/index.js",
-  "files": [
-    "src",
-    "lib",
-    "ios",
-    "*.podspec",
-    "!ios/build",
-    "!**/__tests__",
-    "!**/__fixtures__",
-    "!**/__mocks__",
-    "!**/.*"
-  ],
+  "version": "0.5.4",
+  "description": "React Native wrapper for AppStance iOS SDK",
+  "main": "index.js",
   "scripts": {
-    "test": "jest",
-    "lint": "eslint \"**/*.{js,jsx}\"",
-    "prepack": "bob build",
-    "release": "release-it",
-    "clean": "del-cli lib"
+    "build": "expo-module build",
+    "clean": "expo-module clean",
+    "lint": "expo-module lint",
+    "test": "expo-module test",
+    "prepare": "expo-module prepare",
+    "prepublishOnly": "expo-module prepublishOnly",
+    "expo-module": "expo-module",
+    "open:ios": "xed example/ios",
+    "open:android": "open -a \"Android Studio\" example/android"
   },
   "keywords": [
     "react-native",
-    "ios",
-    "ios-only",
-    "appstance",
-    "analytics",
-    "revenue-tracking",
-    "user-analytics",
-    "remote-config",
-    "mobile-analytics"
+    "expo",
+    "react-native-appstance",
+    "AppStanceSDK"
   ],
   "repository": "https://github.com/AppStanceHQ/react-native-appstance",
-  "author": "AppStanceHQ <appstancehq@gmail.com>",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/AppStanceHQ/react-native-appstance/issues"
   },
+  "author": "AppStanceHQ <appstancehq@gmail.com> (https://github.com/AppStanceHQ)",
+  "license": "MIT",
   "homepage": "https://github.com/AppStanceHQ/react-native-appstance#readme",
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
-  },
   "devDependencies": {
-    "@commitlint/config-conventional": "^17.0.2",
-    "@react-native-community/eslint-config": "^3.0.2",
-    "@release-it/conventional-changelog": "^5.0.0",
-    "commitlint": "^17.0.2",
-    "del-cli": "^5.0.0",
-    "eslint": "^8.4.1",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-prettier": "^4.0.0",
-    "jest": "^28.1.1",
-    "prettier": "^2.0.5",
-    "react": "18.2.0",
-    "react-native": "0.72.6",
-    "react-native-builder-bob": "^0.20.0",
-    "release-it": "^15.0.0"
+    "babel-preset-expo": "^11.0.15",
+    "expo": "~53.0.0",
+    "expo-module-scripts": "^4.1.6",
+    "react-native": "0.79.1"
   },
   "peerDependencies": {
+    "expo": "*",
     "react": "*",
     "react-native": "*"
-  },
-  "engines": {
-    "node": ">= 16.0.0"
-  },
-  "jest": {
-    "preset": "react-native",
-    "modulePathIgnorePatterns": [
-      "<rootDir>/lib/"
-    ]
-  },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
-  },
-  "release-it": {
-    "git": {
-      "commitMessage": "chore: release ${version}",
-      "tagName": "v${version}"
-    },
-    "npm": {
-      "publish": true
-    },
-    "github": {
-      "release": true
-    },
-    "plugins": {
-      "@release-it/conventional-changelog": {
-        "preset": "angular"
-      }
-    }
-  },
-  "eslintConfig": {
-    "root": true,
-    "extends": [
-      "@react-native-community",
-      "prettier"
-    ],
-    "rules": {
-      "prettier/prettier": [
-        "error",
-        {
-          "quoteProps": "consistent",
-          "singleQuote": true,
-          "tabWidth": 2,
-          "trailingComma": "es5",
-          "useTabs": false
-        }
-      ]
-    }
-  },
-  "eslintIgnore": [
-    "node_modules/",
-    "lib/"
-  ],
-  "prettier": {
-    "quoteProps": "consistent",
-    "singleQuote": true,
-    "tabWidth": 2,
-    "trailingComma": "es5",
-    "useTabs": false
-  },
-  "react-native-builder-bob": {
-    "source": "src",
-    "output": "lib",
-    "targets": [
-      "commonjs",
-      "module"
-    ]
   },
   "packageManager": "yarn@1.22.19+sha1.4ba7fc5c6e704fce2066ecbfb0b0d8976fe62447"
 }
