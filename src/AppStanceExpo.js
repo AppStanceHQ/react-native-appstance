@@ -1,4 +1,3 @@
-// Expo implementation (your current code moved here)
 import { requireOptionalNativeModule } from 'expo-modules-core';
 
 const AppStanceSDKModule = requireOptionalNativeModule('AppStanceSDK');
@@ -19,15 +18,16 @@ export default {
      * @param {string} [options.fBAnonymousID] - Facebook anonymous ID (optional)
      * @param {string} [options.revenueCatUserID] - RevenueCat user ID (optional)
      * @param {boolean} [options.debugLogs=false] - Enable debug logs
+     * @returns {Promise<string>} Initialization result
      */
     initialize: ({
-        apiKey,
-        enableStoreKitPurchaseMonitor = true,
-        customUserID = undefined,
-        fBAnonymousID = undefined,
-        revenueCatUserID = undefined,
-        debugLogs = false
-    }) => {
+                     apiKey,
+                     enableStoreKitPurchaseMonitor = true,
+                     customUserID = undefined,
+                     fBAnonymousID = undefined,
+                     revenueCatUserID = undefined,
+                     debugLogs = false
+                 }) => {
         checkModule();
         return AppStanceSDKModule.initialize(
             apiKey,
@@ -40,21 +40,23 @@ export default {
     },
 
     /**
-     * Track external revenue event
+     * Track custom revenue event
      * @param {Object} options - Event options
      * @param {string} options.eventName - Name of the revenue event (required)
      * @param {number} options.amount - Revenue amount (required)
      * @param {string} options.currency - Currency code, e.g., 'USD' (required)
+     * @returns {Promise<string>} Tracking result
      */
-    trackExternalRevenueEvent: ({ eventName, amount, currency }) => {
+    trackCustomRevenueEvent: ({ eventName, amount, currency }) => {
         checkModule();
-        return AppStanceSDKModule.trackExternalRevenueEvent(eventName, amount, currency);
+        return AppStanceSDKModule.trackCustomRevenueEvent(eventName, amount, currency);
     },
 
     /**
      * Track non-revenue event (only once)
      * @param {Object} options - Event options
      * @param {string} options.eventName - Name of the event (required)
+     * @returns {Promise<string>} Tracking result
      */
     trackNonRevenueEventOnce: ({ eventName }) => {
         checkModule();
@@ -72,10 +74,11 @@ export default {
 
     /**
      * Get remote config as JSON string
+     * @param {boolean} [refresh=false] - Whether to refresh the config
      * @returns {Promise<string>} Remote config JSON string
      */
-    getRemoteConfigJSONString: () => {
+    getRemoteConfigJSONString: (refresh = false) => {
         checkModule();
-        return AppStanceSDKModule.getRemoteConfigJSONString();
+        return AppStanceSDKModule.getRemoteConfigJSONString(refresh);
     }
 };

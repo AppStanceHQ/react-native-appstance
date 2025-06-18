@@ -14,26 +14,26 @@ RCT_EXPORT_METHOD(initialize:(NSString *)apiKey
                   resolver:(RCTPromiseResolveBlock)resolve
                   rejecter:(RCTPromiseRejectBlock)reject) {
     @try {
-        [AppStance initializeWithApiKey:apiKey
-                enableStoreKitPurchaseMonitor:enableStoreKit
-                customUserID:customUserID
-                fBAnonymousID:fBAnonymousID
-                revenueCatUserID:revenueCatUserID
-                debugLogs:debugLogs];
-        resolve(nil);
+        NSString *result = [AppStance initializeWithApiKey:apiKey
+                                enableStoreKitPurchaseMonitor:enableStoreKit
+                                customUserID:customUserID
+                                fBAnonymousID:fBAnonymousID
+                                revenueCatUserID:revenueCatUserID
+                                debugLogs:debugLogs];
+        resolve(result);
     } @catch (NSException *exception) {
         reject(@"initialization_error", exception.reason, nil);
     }
 }
 
-RCT_EXPORT_METHOD(trackExternalRevenueEvent:(NSString *)eventName
+RCT_EXPORT_METHOD(trackCustomRevenueEvent:(NSString *)eventName
                   amount:(double)amount
                   currency:(NSString *)currency
                   resolver:(RCTPromiseResolveBlock)resolve
                   rejecter:(RCTPromiseRejectBlock)reject) {
     @try {
-        [AppStance trackExternalRevenueEvent:eventName amount:amount currency:currency];
-        resolve(nil);
+        NSString *result = [AppStance trackCustomRevenueEventWithEventName:eventName amount:amount currency:currency];
+        resolve(result);
     } @catch (NSException *exception) {
         reject(@"tracking_error", exception.reason, nil);
     }
@@ -43,8 +43,8 @@ RCT_EXPORT_METHOD(trackNonRevenueEventOnce:(NSString *)eventName
                   resolver:(RCTPromiseResolveBlock)resolve
                   rejecter:(RCTPromiseRejectBlock)reject) {
     @try {
-        [AppStance trackNonRevenueEventOnce:eventName];
-        resolve(nil);
+        NSString *result = [AppStance trackNonRevenueEventOnceWithEventName:eventName];
+        resolve(result);
     } @catch (NSException *exception) {
         reject(@"tracking_error", exception.reason, nil);
     }
@@ -60,10 +60,11 @@ RCT_EXPORT_METHOD(getAppStanceUserID:(RCTPromiseResolveBlock)resolve
     }
 }
 
-RCT_EXPORT_METHOD(getRemoteConfigJSONString:(RCTPromiseResolveBlock)resolve
+RCT_EXPORT_METHOD(getRemoteConfigJSONString:(BOOL)refresh
+                  resolver:(RCTPromiseResolveBlock)resolve
                   rejecter:(RCTPromiseRejectBlock)reject) {
     @try {
-        NSString *config = [AppStance getRemoteConfigJSONString];
+        NSString *config = [AppStance getRemoteConfigJSONStringWithRefresh:refresh];
         resolve(config);
     } @catch (NSException *exception) {
         reject(@"get_config_error", exception.reason, nil);

@@ -1,3 +1,4 @@
+
 import ExpoModulesCore
 import AppStanceSDK
 
@@ -12,8 +13,8 @@ public class AppStanceSDKModule: Module {
       fBAnonymousID: String?,
       revenueCatUserID: String?,
       debugLogs: Bool
-    ) -> Void in
-      AppStance.initialize(
+    ) in
+      return AppStance.initialize(
         apiKey: apiKey,
         enableStoreKitPurchaseMonitor: enableStoreKitPurchaseMonitor,
         customUserID: customUserID,
@@ -23,24 +24,24 @@ public class AppStanceSDKModule: Module {
       )
     }
 
-    AsyncFunction("trackExternalRevenueEvent") { (
+    AsyncFunction("trackCustomRevenueEvent") { (
       eventName: String,
       amount: Double,
       currency: String
-    ) -> Void in
-      AppStance.trackExternalRevenueEvent(eventName, amount: amount, currency: currency)
+    ) in
+      return AppStance.trackCustomRevenueEvent(eventName: eventName, amount: amount, currency: currency)
     }
 
-    AsyncFunction("trackNonRevenueEventOnce") { (eventName: String) -> Void in
-      AppStance.trackNonRevenueEventOnce(eventName)
+    AsyncFunction("trackNonRevenueEventOnce") { (eventName: String) in
+      return AppStance.trackNonRevenueEventOnce(eventName: eventName)
     }
 
-    AsyncFunction("getAppStanceUserID") { () -> String in
+    AsyncFunction("getAppStanceUserID") { () in
       return AppStance.getAppStanceUserID()
     }
 
-    AsyncFunction("getRemoteConfigJSONString") { () -> String in
-      return AppStance.getRemoteConfigJSONString()
+    AsyncFunction("getRemoteConfigJSONString") { (refresh: Bool) in
+      return AppStance.getRemoteConfigJSONString(refresh: refresh)
     }
   }
 }
