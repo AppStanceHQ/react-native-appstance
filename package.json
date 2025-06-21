@@ -1,6 +1,6 @@
 {
   "name": "react-native-appstance",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "React Native wrapper for AppStance iOS SDK",
   "main": "index.js",
   "scripts": {
