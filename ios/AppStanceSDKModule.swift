@@ -24,16 +24,16 @@ public class AppStanceSDKModule: Module {
       )
     }
 
-    AsyncFunction("trackCustomRevenueEvent") { (
+    AsyncFunction("logCustomRevenueEvent") { (
       eventName: String,
       amount: Double,
       currency: String
     ) in
-      return AppStance.trackCustomRevenueEvent(eventName: eventName, amount: amount, currency: currency)
+      return AppStance.logCustomRevenueEvent(eventName: eventName, amount: amount, currency: currency)
     }
 
-    AsyncFunction("trackNonRevenueEventOnce") { (eventName: String) in
-      return AppStance.trackNonRevenueEventOnce(eventName: eventName)
+    AsyncFunction("logNonRevenueEventOnce") { (eventName: String) in
+      return AppStance.logNonRevenueEventOnce(eventName: eventName)
     }
 
     AsyncFunction("getAppStanceUserID") { () in

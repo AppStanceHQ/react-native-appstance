@@ -26,27 +26,27 @@ RCT_EXPORT_METHOD(initialize:(NSString *)apiKey
     }
 }
 
-RCT_EXPORT_METHOD(trackCustomRevenueEvent:(NSString *)eventName
+RCT_EXPORT_METHOD(logCustomRevenueEvent:(NSString *)eventName
                   amount:(double)amount
                   currency:(NSString *)currency
                   resolver:(RCTPromiseResolveBlock)resolve
                   rejecter:(RCTPromiseRejectBlock)reject) {
     @try {
-        NSString *result = [AppStance trackCustomRevenueEventWithEventName:eventName amount:amount currency:currency];
+        NSString *result = [AppStance logCustomRevenueEventWithEventName:eventName amount:amount currency:currency];
         resolve(result);
     } @catch (NSException *exception) {
-        reject(@"tracking_error", exception.reason, nil);
+        reject(@"log_error", exception.reason, nil);
     }
 }
 
-RCT_EXPORT_METHOD(trackNonRevenueEventOnce:(NSString *)eventName
+RCT_EXPORT_METHOD(logNonRevenueEventOnce:(NSString *)eventName
                   resolver:(RCTPromiseResolveBlock)resolve
                   rejecter:(RCTPromiseRejectBlock)reject) {
     @try {
-        NSString *result = [AppStance trackNonRevenueEventOnceWithEventName:eventName];
+        NSString *result = [AppStance logNonRevenueEventOnceWithEventName:eventName];
         resolve(result);
     } @catch (NSException *exception) {
-        reject(@"tracking_error", exception.reason, nil);
+        reject(@"log_error", exception.reason, nil);
     }
 }
 

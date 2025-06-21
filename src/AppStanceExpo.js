@@ -40,27 +40,27 @@ export default {
     },
 
     /**
-     * Track custom revenue event
+     * log custom revenue event
      * @param {Object} options - Event options
      * @param {string} options.eventName - Name of the revenue event (required)
      * @param {number} options.amount - Revenue amount (required)
      * @param {string} options.currency - Currency code, e.g., 'USD' (required)
-     * @returns {Promise<string>} Tracking result
+     * @returns {Promise<string>} log result
      */
-    trackCustomRevenueEvent: ({ eventName, amount, currency }) => {
+    logCustomRevenueEvent: ({ eventName, amount, currency }) => {
         checkModule();
-        return AppStanceSDKModule.trackCustomRevenueEvent(eventName, amount, currency);
+        return AppStanceSDKModule.logCustomRevenueEvent(eventName, amount, currency);
     },
 
     /**
-     * Track non-revenue event (only once)
+     * log non-revenue event (only once)
      * @param {Object} options - Event options
      * @param {string} options.eventName - Name of the event (required)
-     * @returns {Promise<string>} Tracking result
+     * @returns {Promise<string>} log result
      */
-    trackNonRevenueEventOnce: ({ eventName }) => {
+    logNonRevenueEventOnce: ({ eventName }) => {
         checkModule();
-        return AppStanceSDKModule.trackNonRevenueEventOnce(eventName);
+        return AppStanceSDKModule.logNonRevenueEventOnce(eventName);
     },
 
     /**
