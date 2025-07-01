@@ -7,6 +7,8 @@ RCT_EXPORT_MODULE();
 
 RCT_EXPORT_METHOD(initialize:(NSString *)apiKey
                   enableStoreKitPurchaseMonitor:(BOOL)enableStoreKit
+                  enableSKANAttribution:(BOOL)enableSKANAttribution
+                  optOut:(BOOL)optOut
                   customUserID:(NSString *)customUserID
                   fBAnonymousID:(NSString *)fBAnonymousID
                   revenueCatUserID:(NSString *)revenueCatUserID
@@ -16,6 +18,8 @@ RCT_EXPORT_METHOD(initialize:(NSString *)apiKey
     @try {
         NSString *result = [AppStance initializeWithApiKey:apiKey
                                 enableStoreKitPurchaseMonitor:enableStoreKit
+                                enableSKANAttribution:enableSKANAttribution
+                                optOut:optOut
                                 customUserID:customUserID
                                 fBAnonymousID:fBAnonymousID
                                 revenueCatUserID:revenueCatUserID
@@ -60,11 +64,10 @@ RCT_EXPORT_METHOD(getAppStanceUserID:(RCTPromiseResolveBlock)resolve
     }
 }
 
-RCT_EXPORT_METHOD(getRemoteConfigJSONString:(BOOL)refresh
-                  resolver:(RCTPromiseResolveBlock)resolve
+RCT_EXPORT_METHOD(getRemoteConfigJSONString:(RCTPromiseResolveBlock)resolve
                   rejecter:(RCTPromiseRejectBlock)reject) {
     @try {
-        NSString *config = [AppStance getRemoteConfigJSONStringWithRefresh:refresh];
+        NSString *config = [AppStance getRemoteConfigJSONString];
         resolve(config);
     } @catch (NSException *exception) {
         reject(@"get_config_error", exception.reason, nil);

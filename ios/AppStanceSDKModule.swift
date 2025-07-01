@@ -1,4 +1,3 @@
-
 import ExpoModulesCore
 import AppStanceSDK
 
@@ -9,6 +8,8 @@ public class AppStanceSDKModule: Module {
     AsyncFunction("initialize") { (
       apiKey: String,
       enableStoreKitPurchaseMonitor: Bool,
+      enableSKANAttribution: Bool,
+      optOut: Bool,
       customUserID: String?,
       fBAnonymousID: String?,
       revenueCatUserID: String?,
@@ -17,6 +18,8 @@ public class AppStanceSDKModule: Module {
       return AppStance.initialize(
         apiKey: apiKey,
         enableStoreKitPurchaseMonitor: enableStoreKitPurchaseMonitor,
+        enableSKANAttribution: enableSKANAttribution,
+        optOut: optOut,
         customUserID: customUserID,
         fBAnonymousID: fBAnonymousID,
         revenueCatUserID: revenueCatUserID,
@@ -40,8 +43,8 @@ public class AppStanceSDKModule: Module {
       return AppStance.getAppStanceUserID()
     }
 
-    AsyncFunction("getRemoteConfigJSONString") { (refresh: Bool) in
-      return AppStance.getRemoteConfigJSONString(refresh: refresh)
+    AsyncFunction("getRemoteConfigJSONString") { () in
+      return AppStance.getRemoteConfigJSONString()
     }
   }
 }

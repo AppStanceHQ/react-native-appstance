@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
   s.static_framework = true
 
   # Dependencies
-  s.dependency 'AppStanceSDK', '0.7.4'
+  s.dependency 'AppStanceSDK', '0.7.5'
 
   # Conditionally add ExpoModulesCore only if available
   if defined?(Pod::Specification) && Pod::Specification.method_defined?(:dependency)

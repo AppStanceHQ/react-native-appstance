@@ -14,6 +14,8 @@ export default {
      * @param {Object} options - Configuration options
      * @param {string} options.apiKey - Your AppStance API key (required)
      * @param {boolean} [options.enableStoreKitPurchaseMonitor=true] - Enable StoreKit purchase monitoring
+     * @param {boolean} [options.enableSKANAttribution=false] - Enable SKAdNetwork and AdAttributionKit attribution
+     * @param {boolean} [options.optOut=false] - Opt out of tracking
      * @param {string} [options.customUserID] - Custom user ID (optional)
      * @param {string} [options.fBAnonymousID] - Facebook anonymous ID (optional)
      * @param {string} [options.revenueCatUserID] - RevenueCat user ID (optional)
@@ -23,6 +25,8 @@ export default {
     initialize: ({
                      apiKey,
                      enableStoreKitPurchaseMonitor = true,
+                     enableSKANAttribution = false,
+                     optOut = false,
                      customUserID = undefined,
                      fBAnonymousID = undefined,
                      revenueCatUserID = undefined,
@@ -32,12 +36,15 @@ export default {
         return AppStanceSDKModule.initialize(
             apiKey,
             enableStoreKitPurchaseMonitor,
+            enableSKANAttribution,
+            optOut,
             customUserID,
             fBAnonymousID,
             revenueCatUserID,
             debugLogs
         );
-    },
+    }
+,
 
     /**
      * log custom revenue event
@@ -73,12 +80,12 @@ export default {
     },
 
     /**
-     * Get remote config as JSON string
-     * @param {boolean} [refresh=false] - Whether to refresh the config
+     * Get remote config JSON string
      * @returns {Promise<string>} Remote config JSON string
      */
-    getRemoteConfigJSONString: (refresh = false) => {
+    getRemoteConfigJSONString: () => {
         checkModule();
-        return AppStanceSDKModule.getRemoteConfigJSONString(refresh);
+        return AppStanceSDKModule.getRemoteConfigJSONString();
     }
+
 };
